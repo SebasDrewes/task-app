@@ -1,12 +1,16 @@
 import React from 'react';
 import Overview from './components/Overview'
+import uniqid from "uniqid";
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      newTask: '',
-      tasksList: []
+      newTask: {
+        text: '',
+        id: uniqid()
+      },
+      tasksList: [],
     }
 
     this.addTask = this.addTask.bind(this);
@@ -14,14 +18,20 @@ class App extends React.Component {
   }
   saveFormChange(event) {
     this.setState({
-        newTask: event.target.value
+        newTask: {
+          text: event.target.value,
+          id: this.state.newTask.id,
+        },
     })
     }
 
   addTask(event) {
-    if (this.state.newTask !== '')
+    if (this.state.newTask.text !== '')
     this.setState({
-      newTask: '',
+      newTask: {
+        text: '',
+        id: uniqid(),
+      },
       tasksList: this.state.tasksList.concat(this.state.newTask),
   })
   event.preventDefault()
@@ -34,7 +44,7 @@ class App extends React.Component {
      <form onSubmit={this.addTask}>
        <label>
          Add new Task
-         <input type="text" value ={this.state.newTask} onChange={this.saveFormChange}/>
+         <input type="text" value ={this.state.newTask.text} onChange={this.saveFormChange}/>
          </label>
          <input type="submit" value="Agregar" />
      </form>
