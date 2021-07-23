@@ -4,28 +4,41 @@ import Overview from './components/Overview'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {value: ''}
+    this.state = {
+      newTask: '',
+      tasksList: []
+    }
 
-    this.newTask = this.newTask.bind(this);
-    this.submitTask = this.submitTask.bind(this);
+    this.addTask = this.addTask.bind(this);
+    this.saveFormChange = this.saveFormChange.bind(this);
   }
+  saveFormChange(event) {
+    this.setState({
+        newTask: event.target.value
+    })
+    }
 
-  newTask(event) {
-    this.setState({value: event.target.value})
-  }
-  submitTask(event) {
-    console.log('a task has been added: ' + this.state.value);
-    event.preventDefault();
+  addTask(event) {
+    this.setState(state => {
+      const tasksList = state.tasksList.concat(state.newTask);
+      const newTask = state.newTask
+      return { 
+        tasksList,
+        newTask,
+      }
+  })
+  console.log(this.state)
+  event.preventDefault()
   }
   render() {
   return (
     <div className="App">
       <h1>Task Array</h1>
      <Overview items="Task Array Items" />
-     <form>
+     <form onSubmit={this.addTask}>
        <label>
          Add new Task
-         <input type="text" task="task" />
+         <input type="text" value ={this.state.value} onChange={this.saveFormChange}/>
          </label>
          <input type="submit" value="Agregar" />
      </form>
