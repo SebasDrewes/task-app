@@ -19,7 +19,9 @@ class App extends React.Component {
     }
 
   addTask(event) {
+    if (this.state.newTask !== '')
     this.setState({
+      newTask: '',
       tasksList: this.state.tasksList.concat(this.state.newTask),
   })
   event.preventDefault()
@@ -32,7 +34,7 @@ class App extends React.Component {
      <form onSubmit={this.addTask}>
        <label>
          Add new Task
-         <input type="text" value ={this.state.value} onChange={this.saveFormChange}/>
+         <input type="text" value ={this.state.newTask} onChange={this.saveFormChange}/>
          </label>
          <input type="submit" value="Agregar" />
      </form>
