@@ -27,7 +27,6 @@ class App extends React.Component {
         newTask,
       }
   })
-  console.log(this.state.tasksList)
   event.preventDefault()
   }
   render() {
