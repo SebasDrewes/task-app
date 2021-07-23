@@ -1,16 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Overview extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
+function Overview(props) {
         return (
             <div>
-                <h1>{this.props.items}</h1>
+                <h1>{props.tasks}</h1>
             </div>
         )
-    }
+
 }
 
 export default Overview

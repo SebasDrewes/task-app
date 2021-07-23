@@ -2,8 +2,8 @@ import React from 'react';
 import Overview from './components/Overview'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       newTask: '',
       tasksList: []
@@ -27,14 +27,14 @@ class App extends React.Component {
         newTask,
       }
   })
-  console.log(this.state)
+  console.log(this.state.tasksList)
   event.preventDefault()
   }
   render() {
   return (
     <div className="App">
       <h1>Task Array</h1>
-     <Overview items="Task Array Items" />
+     <Overview tasks={this.state.tasksList} />
      <form onSubmit={this.addTask}>
        <label>
          Add new Task
