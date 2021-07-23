@@ -1,8 +1,9 @@
 import React from 'react'
 
 function Overview({tasks}) {
+    console.log(tasks)
     const listOfTasks = tasks.map((task) => 
-     <li key={task.id}>{task.text}</li>
+     <ul key={task.id}>({task.number}){" "}{task.text}</ul>
     )
         return (
             <div>

@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = {
       newTask: {
         text: '',
+        number: 1,
         id: uniqid()
       },
       tasksList: [],
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.setState({
         newTask: {
           text: event.target.value,
+          number: this.state.newTask.number,
           id: this.state.newTask.id,
         },
     })
@@ -30,6 +32,7 @@ class App extends React.Component {
     this.setState({
       newTask: {
         text: '',
+        number: this.state.newTask.number + 1,
         id: uniqid(),
       },
       tasksList: this.state.tasksList.concat(this.state.newTask),
