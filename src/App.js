@@ -19,13 +19,8 @@ class App extends React.Component {
     }
 
   addTask(event) {
-    this.setState(state => {
-      const tasksList = state.tasksList.concat(state.newTask);
-      const newTask = state.newTask
-      return { 
-        tasksList,
-        newTask,
-      }
+    this.setState({
+      tasksList: this.state.tasksList.concat(this.state.newTask),
   })
   event.preventDefault()
   }
