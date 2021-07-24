@@ -16,6 +16,7 @@ class App extends React.Component {
 
     this.addTask = this.addTask.bind(this);
     this.saveFormChange = this.saveFormChange.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
   saveFormChange(event) {
     this.setState({
@@ -39,11 +40,21 @@ class App extends React.Component {
   })
   event.preventDefault()
   }
+  // en el boton de overview, se pasa como parametro la id correspondiente a cada task
+  deleteTask(taskId){
+    this.setState({
+      newTask: {
+        number: this.state.newTask.number +1
+      },
+      // si se toca ese boton, se borra task que coincia con el id pasado como parametro
+      tasksList: this.state.tasksList.filter((task) => task.id !== taskId)
+    })
+  }
   render() {
   return (
     <div className="App">
       <h1>Task Array</h1>
-     <Overview tasks={this.state.tasksList} />
+     <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask}/>
      <form onSubmit={this.addTask}>
        <label>
          Add new Task
