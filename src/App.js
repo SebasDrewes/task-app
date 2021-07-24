@@ -8,7 +8,6 @@ class App extends React.Component {
     this.state = {
       newTask: {
         text: '',
-        number: 1,
         id: uniqid()
       },
       tasksList: [],
@@ -22,7 +21,6 @@ class App extends React.Component {
     this.setState({
         newTask: {
           text: event.target.value,
-          number: this.state.newTask.number,
           id: this.state.newTask.id,
         },
     })
@@ -33,7 +31,6 @@ class App extends React.Component {
     this.setState({
       newTask: {
         text: '',
-        number: this.state.newTask.number + 1,
         id: uniqid(),
       },
       tasksList: this.state.tasksList.concat(this.state.newTask),
@@ -46,7 +43,7 @@ class App extends React.Component {
   deleteTask(taskId){
     this.setState({
       // si se toca ese boton, se borra task que coincida con el id pasado como parametro
-      tasksList: this.state.tasksList.filter((task) => task.id !== taskId),
+      tasksList: this.state.tasksList.filter((task) => task.id !== taskId)
     })
   }
 
