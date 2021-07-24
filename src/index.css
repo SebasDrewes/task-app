@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
+body {
+    font-family: "Coming Soon";
+    height: 100%;
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#taskList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 60vh;
+    min-width: 50vw;
+    box-sizing: border-box;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1vh;
+    border: 3px; 
+    border-style:solid
+
+}
+.taskContainer{
+    display:flex;
+    flex-direction: column;
+    border: 1px dashed;
+    margin: 0.5vh;
+    width: 50vh;
+    height: 25vh;
+    align-items: center;
+}
+.taskText {
+    font-size: 1.5em;
+    text-align: justify;
+    word-break:break-word;
+    align-items: center;
+    padding: 1vw;
+    margin-bottom: 0;
+}
+.button {
+    font-family: "Coming Soon";
+    font-size: 1em;
+    font-weight: bolder;
+    background: white;
+    border: hidden;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    padding: 0;
+    margin: 2vh;
+
+}
+#addTaskForm {
+    font-size: 1em;
+    font-family: "Coming Soon";
+    border: 1px dashed;
+}
+@media only screen and (max-width: 680px) {
+    #taskList {
+        grid-template-columns: 1fr;
+    }
+}

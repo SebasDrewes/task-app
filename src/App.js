@@ -1,6 +1,7 @@
 import React from 'react';
 import Overview from './components/Overview'
 import uniqid from "uniqid";
+import './index.css'
 
 class App extends React.Component {
   constructor() {
@@ -47,7 +48,12 @@ class App extends React.Component {
     })
   }
   editTask(taskId, taskNewText){
+    if (taskNewText !== '')
     this.setState({
+      newTask: {
+        text: '',
+        id: this.state.newTask.id,
+      },
       taskList: this.state.tasksList.map((task) => {
         if(task.id === taskId) {
           return task.text = taskNewText
@@ -59,15 +65,15 @@ class App extends React.Component {
   }
   render() {
   return (
-    <div className="App">
-      <h1>Task Array</h1>
-     <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask} editTask={this.editTask}/>
+    <div className="App" id="app">
+      <h1 id="title">Lista de Tareas</h1>
+     <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask} editTask={this.editTask} editedTask={this.state.newTask.text}/>
      <form onSubmit={this.addTask}>
        <label>
-         Add new Task
-         <input type="text" value ={this.state.newTask.text} onChange={this.saveFormChange}/>
+         <h1 className="taskText">Agregar o editar tarea</h1>
+         <input id="addTaskForm" type="text" value ={this.state.newTask.text} onChange={this.saveFormChange}/>
          </label>
-         <input type="submit" value="Agregar" />
+         <input className='button'type="submit" value="Confirmar" />
      </form>
     </div>
   );
