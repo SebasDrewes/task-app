@@ -47,17 +47,14 @@ class App extends React.Component {
     })
   }
   editTask(taskId, taskNewText){
-    this.setState(state => {
-      const list = state.tasksList.map((task) => {
+    this.setState({
+      taskList: this.state.tasksList.map((task) => {
         if(task.id === taskId) {
           return task.text = taskNewText
         } else {
           return task;
         }
       })
-      return {
-        list,
-      }
     })
   }
   render() {
