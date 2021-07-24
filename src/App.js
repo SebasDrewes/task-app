@@ -27,9 +27,9 @@ class App extends React.Component {
         },
     })
     }
-
+  
   addTask(event) {
-    if (this.state.newTask.text !== '')
+    if (this.state.newTask.text !== '') {
     this.setState({
       newTask: {
         text: '',
@@ -37,19 +37,19 @@ class App extends React.Component {
         id: uniqid(),
       },
       tasksList: this.state.tasksList.concat(this.state.newTask),
+    
   })
+}
   event.preventDefault()
   }
   // en el boton de overview, se pasa como parametro la id correspondiente a cada task
   deleteTask(taskId){
     this.setState({
-      newTask: {
-        number: this.state.newTask.number +1
-      },
-      // si se toca ese boton, se borra task que coincia con el id pasado como parametro
-      tasksList: this.state.tasksList.filter((task) => task.id !== taskId)
+      // si se toca ese boton, se borra task que coincida con el id pasado como parametro
+      tasksList: this.state.tasksList.filter((task) => task.id !== taskId),
     })
   }
+
   render() {
   return (
     <div className="App">
