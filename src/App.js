@@ -64,7 +64,6 @@ class App extends React.Component {
       },
       taskList: this.state.tasksList.map((task) => {
         if(task.id === taskId && task.editActivated === 'false'){
-          console.log(task);
           return [
             task.editActivated = 'true',
             task.editTaskButton = 'Guardar Cambios'
