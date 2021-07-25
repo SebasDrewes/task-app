@@ -15,12 +15,13 @@ class App extends React.Component {
       },
       tasksList: [],
     }
-
+    //bindeadas funciones para usar this
     this.addTask = this.addTask.bind(this);
     this.saveFormChange = this.saveFormChange.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.editTask = this.editTask.bind(this);
   }
+  //cada vez que hay un cambio en input form, se guarda newTask text
   saveFormChange(event) {
     this.setState({
         newTask: {
@@ -31,7 +32,7 @@ class App extends React.Component {
         },
     })
     }
-  
+  //se agrega tarea y se resetean valores nueva tarea
   addTask(event) {
     event.preventDefault()
     if (this.state.newTask.text !== '') {
@@ -54,7 +55,8 @@ class App extends React.Component {
     })
   }
 
-
+// al tocar boton edit task, se cambia contenteditable correspondiente 
+// y se cambia texto del boton
   editTask(taskId){
     this.setState({
       newTask: {
@@ -63,6 +65,7 @@ class App extends React.Component {
         editTaskButton: this.state.newTask.editTaskButton,
       },
       taskList: this.state.tasksList.map((task) => {
+        // a la tarea seleccionada, activa edit
         if(task.id === taskId && task.editActivated === 'false'){
           return [
             task.editActivated = 'true',
@@ -75,6 +78,7 @@ class App extends React.Component {
           task.editTaskButton = 'Editar Tarea'
         ]
         }
+        // devuelve tareas no seleccionadas
         else {
           return task;
         }
