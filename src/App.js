@@ -89,7 +89,7 @@ class App extends React.Component {
      <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask} editTask={this.editTask} editTaskButton={this.state.editTaskButton}/>
      <form onSubmit={this.addTask}>
        <label>
-         <h1 className="taskText">Agregar o editar tarea</h1>
+         <h1 className="agregarTarea">Agregar Tarea</h1>
          <input id="addTaskForm" type="text" value ={this.state.newTask.text} onChange={this.saveFormChange}/>
          </label>
          <input className='button'type="submit" value="Confirmar" />

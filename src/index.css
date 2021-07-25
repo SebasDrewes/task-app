@@ -28,6 +28,13 @@ body {
     width: 50vh;
     height: 25vh;
     align-items: center;
+    justify-content: space-around;
+}
+.agregarTarea{
+    text-align: center;
+}
+#textContainer{
+    display:flex;
 }
 .taskText {
     font-size: 1.5em;
