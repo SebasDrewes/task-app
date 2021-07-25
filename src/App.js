@@ -9,7 +9,9 @@ class App extends React.Component {
     this.state = {
       newTask: {
         text: '',
-        id: uniqid()
+        editActivated: 'false',
+        editTaskButton: 'Editar Tarea',
+        id: uniqid(),
       },
       tasksList: [],
     }
@@ -24,6 +26,8 @@ class App extends React.Component {
         newTask: {
           text: event.target.value,
           id: this.state.newTask.id,
+          editActivated: this.state.newTask.editActivated,
+          editTaskButton: this.state.newTask.editTaskButton,
         },
     })
     }
@@ -34,11 +38,13 @@ class App extends React.Component {
     this.setState({
       newTask: {
         text: '',
+        editActivated: 'false',
+        editTaskButton: 'Editar Tarea',
         id: uniqid(),
       },
       tasksList: this.state.tasksList.concat(this.state.newTask),
     
-  })}
+  });console.log(this.state.tasksList)}
   }
   // en el boton de overview, se pasa como parametro la id correspondiente a cada task
   deleteTask(taskId){
@@ -47,27 +53,40 @@ class App extends React.Component {
       tasksList: this.state.tasksList.filter((task) => task.id !== taskId)
     })
   }
-  editTask(taskId, taskNewText){
-    if (taskNewText !== '')
+
+
+  editTask(taskId){
     this.setState({
       newTask: {
         text: '',
         id: this.state.newTask.id,
+        editTaskButton: this.state.newTask.editTaskButton,
       },
       taskList: this.state.tasksList.map((task) => {
-        if(task.id === taskId) {
-          return task.text = taskNewText
-        } else {
+        if(task.id === taskId && task.editActivated === 'false'){
+          console.log(task);
+          return [
+            task.editActivated = 'true',
+            task.editTaskButton = 'Guardar Cambios'
+          ]
+          
+        } else if (task.id === taskId && task.editActivated === 'true'){
+          return [ 
+            task.editActivated = 'false',
+          task.editTaskButton = 'Editar Tarea'
+        ]
+        }
+        else {
           return task;
         }
-      })
+      }),
     })
   }
   render() {
   return (
     <div className="App" id="app">
       <h1 id="title">Lista de Tareas</h1>
-     <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask} editTask={this.editTask} editedTask={this.state.newTask.text}/>
+     <Overview tasks={this.state.tasksList} deleteTask={this.deleteTask} editTask={this.editTask} editTaskButton={this.state.editTaskButton}/>
      <form onSubmit={this.addTask}>
        <label>
          <h1 className="taskText">Agregar o editar tarea</h1>

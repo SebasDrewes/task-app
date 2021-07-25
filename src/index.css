@@ -13,14 +13,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 60vh;
-    min-width: 50vw;
     box-sizing: border-box;
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 1vh;
-    border: 3px; 
-    border-style:solid
 
 }
 .taskContainer{
